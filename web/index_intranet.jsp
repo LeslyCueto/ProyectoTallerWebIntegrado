@@ -273,7 +273,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></span>
-                                <i class="fa-regular fa-circle-user" style="color: #cc5c92;"></i>
+                                <i class="fa-regular fa-circle-user" style="color: #2D572C;"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -324,10 +324,10 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Hola,<?=" ".$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></h6>
                             </div>
                             <div class="card-body">
-                                <p>En el nuevo sistema de ventas de "Cat Cafe" ahora puedes administrar, revisar los proudctos, clientes, usuarios almacenados y tener un control con el registro de ventas.</p>
+                                <p>En el nuevo sistema de ventas de "Cat Cafe" ahora puedes administrar, revisar los productos, datos de clientes, usuarios almacenados y tener un control con el registro de ventas.</p>
                                 <div class="text-center">
-                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 40rem;"
-                                        src="../intranet/img/undraw_web_devices_re_m8sc.svg" alt="...">
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;"
+                                        src="INTRANET/intranet/img/undraw_coffee_with_friends_3cbj.svg" alt="...">
                                   
                                 </div>
                                 

@@ -48,8 +48,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item INICIO -->
             <!-- Nav Item INICIO -->
             <li class="nav-item active">
                 <a class="nav-link" href="index_intranet.jsp">
@@ -275,7 +273,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></span>
-                                <i class="fa-regular fa-circle-user" style="color: #cc5c92;"></i>
+                                <i class="fa-regular fa-circle-user" style="color: #2D572C;"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -311,11 +309,11 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar producto</h1>
                     
-                    <form method="POST" action="agregarprod.php" >
+                    <form method="POST" action="lista_productos.jsp" >
                      
                  <div class="form-group">
                   <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Helados(1), Recipientes(2), Topins(3)">
+                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(1), Sandwiches(2), Postres(3)">
                  </div>
                      
                  <div class="form-group">
@@ -325,12 +323,12 @@
  
                  <div class="form-group">
                   <label for="exampleInputPassword1">Descripción</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ej. Helado Sabor a Maracuya">
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ej. Cafe Pasado, Torta 3 leches, etc..">
                  </div>
                      
                  <div class="form-group">
                   <label for="exampleInputPassword1">Cantidad</label>
-                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" placeholder="ej. 10 cajas x 30 envases">
+                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" placeholder="ej. 10 cajas x 30 bolsas/envases">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Precio x unid</label>

@@ -310,7 +310,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar usuario</h1>
                     
-                 <form method="POST" action="agregarusuario.php">
+                 <form method="POST" action="lista_usuarios.jsp">
                  <div class="form-group">
                    <label for="exampleInputEmail1">Nombres</label>
                    <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" aria-describedby="emailHelp" placeholder="Ingresar nombres">
@@ -337,7 +337,8 @@
                  </div>
                 
                      <button name="enviar" type="submit" id="enviar" value="Enviar" class="btn btn-primary">Agregar</button> &nbsp;
-                     <a href="usuarios.php">  Revisar lista</a>
+                     <button name="eliminar" type="reset" id="eliminar" value="Eliminar" class="btn btn-primary">Borrar</button> &nbsp;
+                     <a href="lista_usuarios.jsp">  Revisar lista</a>
                 </form>
 
                 </div>

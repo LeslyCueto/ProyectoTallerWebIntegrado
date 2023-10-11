@@ -309,7 +309,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar producto</h1>
                     
-                    <form method="POST" action="lista_productos.jsp" >
+                <form method="POST" action="lista_productos.jsp" >
                      
                  <div class="form-group">
                   <label for="exampleInputPassword1">N° Categoría</label>

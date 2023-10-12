@@ -1,8 +1,7 @@
-<%-- 
-    Document   : lista_productos
-    Created on : 10 oct. 2023, 17:51:21
-    Author     : Lesly
---%>
+<%@page import="java.util.Iterator" %>
+<%@page import="Modelo.Productos" %>
+<%@page import="java.util.List" %>
+<%@page import="ModeloDAO.ProductoDAO" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -316,44 +315,8 @@
                      
                     </div>
                     
-                    <a href="admin_productos.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    <a href="ControladorProductos?accion=add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Agregar producto</a><br>
-                   
-                    
-                    <script>
-                    function advertencia(){
-                        var not=confirm("Seguro que deseas eliminar?");
-                        return not;
-                    } 
-                    </script>
-                    
-                    
-                   <!--  ELIMINAR DATOS-->
-                   <?php  
-                   if(isset($_GET['id'])){
-                   $id=$_GET['id'];
-                   $consulta="delete from productos where idproductos=$id";
-                   $eliminar= mysqli_query($con, $consulta);?>
-                   
-                    <script>
-                    swal({
-                    title: "Completo!",
-                    text: "El cliente se eliminó correctamente!",
-                    icon: "success",
-                    button: "Ok!",
-                    });
-                    </script>
-               
-                   
-                    <script>
-                    setTimeout(()=>{
-                        window.history.replaceState(null,null,window.location.pathname);
-                    }, 0);
-                    </script>                   
-                   <?php } ?> 
-                    
-                    
-                    
                     
                     
                     <!-- DataTales Example -->
@@ -361,8 +324,7 @@
                     <form method="POST" action="">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Productos registrados</h6>
-                            
+                            <h6 class="m-0 font-weight-bold text-primary">Productos registrados</h6> 
                         </div>
                         
                         <div class="card-body">
@@ -370,8 +332,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>N° Orden</th>
-                                            <th>Código Producto</th>
+                                            <th>ID Producto</th>
                                             <th>N° Categoría</th>
                                             <th>Nombre</th>
                                             <th>Descripción</th>
@@ -385,8 +346,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>N° Orden</th>
-                                            <th>Código Producto</th>
+                                            <th>ID Producto</th>
                                             <th>N° Categoría</th>
                                             <th>Nombre</th>
                                             <th>Descripción</th>
@@ -398,29 +358,37 @@
                                             <th><i class="fa-solid fa-bars"></i></th>
                                         </tr>
                                     </tfoot>
-                                    <?php
-                                        while ($fila= mysqli_fetch_assoc($lista)){
-                                            $numeracion++;
-                                        ?>
-                                    <tbody>
-                                    <td><?php say($numeracion)?> </td>
-                                    <td><?php say($fila['idproductos'])?> </td>
-                                    <td><?php say($fila['idcategoria'])?> </td>
-                                    <td><?php say($fila['nombreproducto'])?> </td>
-                                    <td><?php say($fila['descripcion'])?> </td>
-                                    <td><?php say($fila['cantidadproducto'])?> </td>
-                                    <td><?php say($fila['preciounidad'])?> </td>
-                                    <td><?php say($fila['stock'])?> </td>
-                                    <td><?php say($fila['fechavencimiento'])?> </td> 
+                       <tbody>
+                                        
+                        <!-- JS CODE -->    
+                        <%
+                        ProductoDAO dao= new ProductoDAO();
+                        List<Productos> lista = dao.ListarProductos();
+                        Iterator<Productos> iter = lista.iterator();
+                        Productos p= null;
+                        while(iter.hasNext()){
+                        p=iter.next();
+                        
+                        %>
+                        <tr>    
+                                    <td><%= p.getIdproductos() %></td>
+                                    <td><%= p.getIdcategoria() %></td>
+                                    <td><%= p.getNombreproducto() %></td>
+                                    <td><%= p.getDescripcion() %></td>
+                                    <td><%= p.getCantidadproducto() %></td>
+                                    <td><%= p.getPreciounidad() %></td>
+                                    <td><%= p.getStock() %></td>
+                                    <td><%= p.getFechavencimiento() %></td> 
                                     <td>
-                                        <a onclick="return advertencia()" href="productos.php?id=<?=$fila['idproductos']?>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a>
+                                        <a onclick="" href="ControladorProductos?accion=eliminar&idprod=<%= p.getIdproductos() %>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="" href="" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a onclick="" href="ControladorProductos?accion=editar&idprod=<%= p.getIdproductos() %>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
                                     </td>
-                                    
-                                    </tbody>
-                                    <?php } ?>
+                        </tr>
+                          <%}%>
+                          </tbody>
+                                   
                                 </table>
                             </div>
                         </div>

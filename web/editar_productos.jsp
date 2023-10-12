@@ -1,4 +1,7 @@
+<%@page import="Modelo.Productos" %>
+<%@page import="ModeloDAO.ProductoDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agregar producto</title>
+    <title>Editar producto</title>
 
     <!-- Custom fonts for this template-->
     <link href="INTRANET/intranet/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
@@ -266,7 +269,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <i class="fa-regular fa-circle-user" style="color: #2D572C;"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -299,49 +302,60 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
+                    <%
+                    ProductoDAO dao = new ProductoDAO();
+                    String idprod = (String) request.getAttribute("idprod");
+                    Productos p = dao.Obtener(idprod);
+                    %>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Agregar producto</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Editar producto</h1>
                     
-                <form method="POST" action="lista_productos.jsp" >
+                <form method="POST" action="ControladorProductos" >
+                
+                <div class="form-group">
+                   <label for="exampleInputEmail1">ID Producto</label>
+                   <input type="text" class="form-control" id="idproducto" name="idproducto" readonly value="<%= p.getIdproductos()%>" enab>
+                 </div>
                     
                 <div class="form-group">
                    <label for="exampleInputEmail1">Nombre</label>
-                   <input type="text" class="form-control" id="nombreproducto" name="nombreproducto" aria-describedby="emailHelp" placeholder="Ingresar nombre del producto">
+                   <input type="text" class="form-control" id="nombreproducto" name="nombreproducto" value="<%= p.getNombreproducto() %>">
                  </div>    
                     
                  <div class="form-group">
                   <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(1), Sandwiches(2), Postres(3)">
+                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" value="<%= p.getIdcategoria() %>">
                  </div>
  
                  <div class="form-group">
                   <label for="exampleInputPassword1">Descripción</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ej. Cafe Pasado, Torta 3 leches, etc..">
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" value="<%= p.getDescripcion() %>">
                  </div>
                      
                  <div class="form-group">
                   <label for="exampleInputPassword1">Cantidad</label>
-                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" placeholder="ej. 10 cajas x 30 bolsas/envases">
+                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" value="<%= p.getCantidadproducto() %>">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Precio x unid</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
+                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" value="<%= p.getPreciounidad() %>">
                  </div>
                      
                  <div class="form-group">
                   <label for="exampleInputPassword1">Stock</label>
-                  <input type="text" class="form-control" id="stock" name="stock" placeholder="50">
+                  <input type="text" class="form-control" id="stock" name="stock" value="<%= p.getStock() %>">
                  </div>
                   
                  <div class="form-group">
                  <label for="exampleInputPassword1" class="form-label">Fecha de vencimiento</label>
-                 <input type="date" name="fechavencimiento" class="form-control" id="fechavencimiento" >
+                 <input type="date" name="fechavencimiento" class="form-control" id="fechavencimiento" value="<%= p.getFechavencimiento() %>">
                  </div>       
                  
               
                  <br>    
-                 <button name="enviar" type="submit" id="enviar" value="Enviar" class="btn btn-primary">Agregar</button>
+                 <button name="accion" type="submit" value="Actualizar" class="btn btn-primary">Actualizar</button>
                 </form>
                     <br> 
                     <br> 

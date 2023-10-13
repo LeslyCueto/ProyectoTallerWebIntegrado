@@ -303,7 +303,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar producto</h1>
                     
-                <form method="POST" action="lista_productos.jsp" >
+                <form method="POST" action="ControladorProductos" >
                     
                 <div class="form-group">
                    <label for="exampleInputEmail1">Nombre</label>
@@ -312,7 +312,7 @@
                     
                  <div class="form-group">
                   <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(1), Sandwiches(2), Postres(3)">
+                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(1), Sandwiches(2), Postres(3), Adicionales(4)">
                  </div>
  
                  <div class="form-group">
@@ -341,7 +341,7 @@
                  
               
                  <br>    
-                 <button name="enviar" type="submit" id="enviar" value="Enviar" class="btn btn-primary">Agregar</button>
+                 <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
                 </form>
                     <br> 
                     <br> 

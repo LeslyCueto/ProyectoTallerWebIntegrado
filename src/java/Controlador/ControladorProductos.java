@@ -7,7 +7,6 @@ package Controlador;
 import Modelo.*;
 import ModeloDAO.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +23,7 @@ public class ControladorProductos extends HttpServlet {
     String vistaeditarprod="editar_productos.jsp";
     Productos p = new Productos();
     ProductoDAO dao = new ProductoDAO(); 
-    String id;
+    int id;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,7 +47,7 @@ public class ControladorProductos extends HttpServlet {
             dao.Editar(p);
             acceso=vistalistaprod;
         }else if (accion.equalsIgnoreCase("eliminar")){
-            id = request.getParameter("idprod");
+            id = Integer.parseInt("idprod");
             dao.Eliminar(id);
             acceso=vistalistaprod;
         }        

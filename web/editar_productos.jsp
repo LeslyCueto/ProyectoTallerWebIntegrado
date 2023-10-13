@@ -305,12 +305,12 @@
                     
                     <%
                     ProductoDAO dao = new ProductoDAO();
-                    String idprod = (String) request.getAttribute("idprod");
+                    int idprod = (int) Integer.parseInt("idprod");
                     Productos p = dao.Obtener(idprod);
                     %>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Editar producto</h1>
+                <h1 class="h3 mb-4 text-gray-800">Editar producto</h1>
                     
                 <form method="POST" action="ControladorProductos" >
                 

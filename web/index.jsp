@@ -40,7 +40,6 @@
            HEADER MENU
         ================================== -->
         <div class="hm-header">
-
             <div class="container">
                 <div class="header-menu">
 
@@ -53,7 +52,7 @@
                     <nav class="hm-menu">
                         <ul>
                 <li><a href="index.jsp">Inicio</a></li>
-                <li><a href=<"nosotros.jsp">Nosotros</a></li>
+                <li><a href="nosotros.jsp">Nosotros</a></li>
                 <li><a href="productos.jsp">Productos</a></li>
                 <li><a href="">Contacto</a></li>
                 <li><a href="adopta.jsp">Adopta</a></li>

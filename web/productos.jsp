@@ -54,7 +54,7 @@
                                 <li><a href="nosotros.jsp">Nosotros</a></li>
                                 <li><a href="productos.jsp">Productos</a></li>
                                 <li><a href="">Contacto</a></li>
-                                <li><a href="">Adopta</a></li>
+                                <li><a href="adopta.jsp">Adopta</a></li>
                                 <li><a href="">Atencion al cliente</a></li>
                             </ul>
                      <div class="hm-icon-cart">

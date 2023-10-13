@@ -15,7 +15,11 @@ public class Productos{
    
    //constructor
 
-    public Productos(int idproductos, String nombreproducto, String descripcion, int idcategoria, String cantidadproducto, double preciounidad, String fechavencimiento, int stock, String indicador) {
+    public Productos() {
+    }
+    
+
+    public Productos(int idproductos, String nombreproducto, String descripcion, int idcategoria, String cantidadproducto, double preciounidad, String fechavencimiento, int stock) {
         this.idproductos = idproductos;
         this.nombreproducto = nombreproducto;
         this.descripcion = descripcion;

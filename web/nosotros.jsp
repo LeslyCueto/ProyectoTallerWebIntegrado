@@ -1,37 +1,39 @@
 <%-- 
-    Document   : nosotros
-    Created on : 5 oct. 2023, 18:41:56
+    Document   : adopta
+    Created on : 5 oct. 2023, 18:42:14
     Author     : Lesly
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Nosotros</title>
-        
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adopta.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- FUENTE GOOGLE FONTS : Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- ICONS: Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- ICONS: Line Awesome -->
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
     <!-- Animaciones AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 
     <!-- Mis Estilos -->
-    <link href="css/nosotros_style.css" rel="stylesheet" type="text/css"/>
-
-
-    </head>
-    <body>
-
+    <link href="css/nosotros.css" rel="stylesheet" type="text/css"/>
+    <title>Nosotros</title>
+</head>
+<body>
+    
+<section class="principal">
     <div class="hm-wrapper">
 
         <!-- =================================
@@ -45,23 +47,23 @@
                     <div class="hm-logo">
                         <a href="#">
                             <img src="imagenes/Cat cafe.png" alt=""/>
+                           
                         </a>
                     </div>
 
                     <nav class="hm-menu">
                         <ul>
-                <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="nosotros.jsp">Nosotros</a></li>
-                <li><a href="productos.jsp">Productos</a></li>
-                <li><a href="contacto.jsp">Contacto</a></li>
-                <li><a href="adopta.jsp">Adopta</a></li>
-                <li><a href="atencionCliente.jsp">Atencion al cliente</a></li>
-
+                            <li><a href="index.jsp">Inicio</a></li>
+                            <li><a href="nosotros.jsp">Nosotros</a></li>
+                            <li><a href="productos.jsp">Productos</a></li>
+                            <li><a href="">Contacto</a></li>
+                            <li><a href="adopta.jsp">Adopta</a></li>
+                            <li><a href="">Atencion al cliente</a></li>
                         </ul>
 
 
                         <div class="hm-icon-cart">
-                            <a href="">
+                            <a href="#">
                                 <i class="las la-shopping-cart"></i>
                                 <span>0</span>
                             </a>
@@ -79,7 +81,7 @@
         </div>
 
         <!-- =================================
-           HEADER MENU MOVIL
+           HEADER MENU Movil
         ================================== -->
         <div class="header-menu-movil">
             <button class="cerrar-menu"><i class="fas fa-times"></i></button>
@@ -87,271 +89,113 @@
                 <li><a href="index.jsp">Inicio</a></li>
                 <li><a href="nosotros.jsp">Nosotros</a></li>
                 <li><a href="productos.jsp">Productos</a></li>
-                <li><a href="contacto.jsp">Contacto</a></li>
-                <li><a href="adopta.jsp">Adopta</a></li>
-                <li><a href="atencionCliente.jsp">Atencion al cliente</a></li>
-                
+                <li><a href="">Contacto</a></li>
+                <li><a href="">Adopta</a></li>
+                <li><a href="">Atencion al cliente</a></li>
             </ul>
         </div>
-        <!-- =================================
-          NOSOTROS
-        ================================== -->
-        <div class="hm-page-block">
-            <div class="container">
-                <div class="header-title">
-                    <h1  data-aos="fade-up" data-aos-duration="3000">¿Quienes somos?</h1>
+
+    </div>
+</section>
+
+
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">¿Quienes somos?</h2>
+            <p class="about__paragraph"> En CatCafe, somos amantes apasionados de los gatos con una misión única: crear un refugio cálido y acogedor para nuestros amigos felinos mientras ofrecemos a nuestros clientes una experiencia gastronómica excepcional.
+            </p>
+        </section>
+
+        <section class="knowledge">
+            <div class="knowledge__container container">
+                <div class="knowledege__texts">
+                    <h2 class="subtitle"> Nuestra historia</h2>
+                    <p class="knowledge__paragraph">Todo comenzó con el amor incondicional por los gatos de nuestros fundadores. Inspirados por la necesidad de
+                        brindar un hogar temporal a gatos rescatados y la idea de compartir esa alegría con la comunidad, nació CatCafe. Desde entonces, hemos estado dedicados a la misión de encontrar hogares amorosos y permanentes 
+                        para estos maravillosos gatos rescatados.</p>
                 </div>
 
-       
-                <div>
-                    <img src="imagenes/nosotrosfoto.webp" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="res-des pad-rig">
-                    <div class="global">
-                  
-                    </div>
-                    <br>
-                    <br>
-                    <p style="justify-content: center" >
-                        En CatCafe, somos amantes apasionados de los gatos con una misión única: crear un refugio cálido y acogedor para nuestros amigos felinos mientras ofrecemos a nuestros clientes una experiencia gastronómica excepcional.
-                    </p>  
-                </div>
-     
+                <figure class="knowledge__picture">
+                          <img src="imagenes/nosotrosfoto.webp" class="knowledge__img">
 
-                
-                   
-
-                </div>
-
-
-                <div class="container">
-                    <div class="header-title">
-                        <h1  data-aos="fade-up" data-aos-duration="3000">Nuestra Historia</h1>
-                    </div>
-    
-           
-                    <div>
-                        <img src="imagenes/nosotrosfoto.webp" class="img-fluid" alt="Responsive image">
-                    </div>
-                    <div class="res-des pad-rig">
-                        <div class="global">
-                      
-                        </div>
-                        <br>
-                        <br>
-                        <p style="justify-content: center" >
-                            Todo comenzó con el amor incondicional por los gatos de nuestros fundadores. Inspirados por la necesidad de
-                             brindar un hogar temporal a gatos rescatados y la idea de compartir esa alegría con la comunidad, nació CatCafe. Desde entonces, hemos estado dedicados a la misión de encontrar hogares amorosos y permanentes para estos maravillosos gatos rescatados. </p>  
-                    </div>
-         
-    
-                    
-                       
-    
-                    </div>
-
+                </figure>
             </div>
+        </section>
+
         
 
+        <section class="testimony">
+            <div class="testimony__container container">
 
-         <!-- =================================
-          MISION Y VISION
-        ================================== -->
-        <div class="hm-page-block bg-fondo">
-
-            <div class="container">
-
-                <div class="header-title" data-aos="fade-up">
-                    <h1>Nuestra Misión</h1>
-                </div>
-        <section class="disco">
-        <div class="container">
-            
-                    <figure class="figure">
-                    <img src="imagenes/barista3.webp" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-            
-                    <figcaption class="figure-caption">Nuestra misión.</figcaption>
-
-                    </figure>
-                   
-              
-
-                <div class="res-des pad-rig">
-                    <div class="global">
-                        
-                        
-                        
-                        </div>
+                <section class="testimony__body testimony__body--show" data-id="1">
+                    <div class="testimony__texts">
+                        <h2 class="subtitle">Nuestra misión</h2>
+                        <p class="testimony__review">Nuestra misión es educar a la comunidad para mejorar la calidad de vida de los michis, sobretodo los que viven en estado de abandono, trabajando en beneficio de todos. Encontramos hogares permanentes y responsables para ellos, y promovemos campañas gratuitas de esterilización para reducir su sobrepoblación. Involucramos a la comunidad en la misma causa, junto al apoyo de veterinarios, rescatistas y voluntarios.</p>
                     </div>
-                    <p>
-                        Nuestra misión es crear un espacio único y acogedor donde los amantes de los gatos puedan disfrutar de deliciosas bebidas y 
-                        comidas mientras interactúan con gatos adoptables, fomentando así la adopción responsable y el bienestar de estos adorables felinos.
-                    </p>
-                
-               
 
+                    <figure class="testimony__picture">
+                        <img src="imagenes/nosotrosfoto.webp"  class="testimony__img">
+                    </figure>
+                </section>
             </div>
-            </section>
-            
-                <div class="container">
-
-                <div class="header-title" data-aos="fade-up">
-                    <h1>Nuestra Visión</h1>
-                </div>
-                    
-            <section>
-        <div class="container">
-            
-                    <figure class="figure">
-                    <img src="imagenes/Barista2.jpg" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                    <figcaption class="figure-caption">Nuestra visión.</figcaption>
-                    </figure>
-                   
-              
-
-                <div class="res-des pad-rig">
-                    <div class="global">
-                        
-                        
-                        
-                        </div>
+        </section>
+        <section class="vision">
+            <div class="testimony__container container">
+                <figure class="testimony__picture1">
+                   <img src="imagenes/nosotrosfoto.webp"  class="testimony__img2">
+                </figure>
+                <section class="testimony__body testimony__body--show" data-id="1">
+                    <div class="testimony__texts2">
+                        <h2 class="subtitle">Nuestra misión</h2>
+                        <p class="testimony__review">Nuestra misión es educar a la comunidad para mejorar la calidad de vida de los michis, sobretodo los que viven en estado de abandono, trabajando en beneficio de todos. Encontramos hogares permanentes y responsables para ellos, y promovemos campañas gratuitas de esterilización para reducir su sobrepoblación. Involucramos a la comunidad en la misma causa, junto al apoyo de veterinarios, rescatistas y voluntarios.</p>
                     </div>
-                    <p>
-                        Tutti Frutti se compromete a ser una empresa responsable con la comunidad y el medio ambiente.En estar a la vanguardia de las 
-                        tendencias en la industria del helado, introduciendo nuevos sabores y conceptos para mantener a sus clientes emocionados y regresando por más.
-                    </p>
-                
-               
 
+                    
+                </section>
+            </div>
+                    
+                
+        </section>
+    
+        
+<section class="piedepagina">
+    
+    <div class="pie-pagina ">
+        <div class="contenedor-piepagina contenedor">
+            <div class="info">
+                <h3>Dirección</h3>
+                <p>Av </p>
+            </div>
+            <div class="info">
+                <h3>Días especiales</h3>
+                <p>Sabados y Jueves 7am - 11pm</p>
+                <p>923476431</p>
+            </div>
+            <div class="info">
+                <h3>Horarios</h3>
+                <p>Lunes - Domingo 7am - 11pm</p>
+                <div class="redes-sociales redes-pie">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+            <div class="info">
+                <h3>Noticias</h3>
+                <p>suscribete para recibir más noticias</p>
+                <input type="email" placeholder="Tu correo">
+                <input type="submit" class="btn btn-verde" value="Suscribirse">
             </div>
         </div>
-         
-    </section>
-                    </div>
-
-                </div>
-
-                </div>
-
-       
-
-
-
-         <!-- =================================
-           FOOTER
-        ================================== -->
-        <footer>
-            
-            <div class="container" >
-                <div class="foo-row">
-                    <div class="foo-col">
-                        <h2>Contacto</h2>
-                        <form action="" method="">
-
-                            <div class="f-input">
-                                
-                                <input type="text" placeholder="Ingrese su correo">
-                                <button type="submit" class="hm-btn-round btn-primary"><i class="far fa-paper-plane"></i></button>
-                            </div>
-                        </form>
-
-                    </div>
-
-                    <div class="foo-col">
-                        <ul>
-                <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="nosotros.jsp">Nosotros</a></li>
-                <li><a href="productos.jsp">Productos</a></li>
-                <li><a href="contacto.jsp">Contacto</a></li>
-                <li><a href="adopta.jsp">Adopta</a></li>
-                <li><a href="atencionCliente.jsp">Atencion al cliente</a></li>
-                <li><a href="">Autores: Lesly y Nayly:))</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                
-            </div>
-
-        </footer>
     </div>
-    
-    <!-- Animaciones : AOS-->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <footer class="footer">
+        <p>Todos los derechos reservados &copy; 2023 Cat cafe desarrollado por Lesly y Nayly</p>
+    </footer>
 
-    <!-- Mi Script -->
-    <script src="../js/inicio.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</section>
 
-    <script>
-        AOS.init({
-            duration: 1200,
-        })
-    </script>
-    
-    <script type="text/javascript">
-            var slides = document.querySelectorAll('.slide');
-            var btns = document.querySelectorAll('.btn');
-            let currentSlide = 1;
-
-            //Javscript para movimiento manual
-            var manualNav = function(manual){
-                slides.forEach((slide) => {
-                    slide.classList.remove('active');
-
-                btns.forEach ((btn) => {
-                    btn.classList.remove('active');
-                });   
-                });
-
-
-                slides[manual].classList.add('active');
-                btns[manual].classList.add('active');
-
-            }
-
-            btns.forEach((btn,i) => {
-                btn.addEventListener("click",() => {
-                    manualNav(i);
-                    currentSlide = i;
-                });
-            });
-
-            //Javascript para movimiento de imagen automatico
-            var repeat = function(activeClass){
-                let active = document.getElementsByClassName('active');
-                let i = 1;
-
-                var repeater = () => {
-                    setTimeout(function () {
-                        [...active].forEach((activeSlide) => {
-                            activeSlide.classList.remove('active');
-                        });
-                    
-                        slides[i].classList.add('active');
-                        btns[i].classList.add('active');
-                        i++;
-
-                        if (slides.length == i) {
-                            i = 0;
-                        }
-                        if (i >= slides.length) {
-                            return;
-                        }
-                        repeater();
-                    },10000);
-                }
-                repeater();
-            }
-            repeat();
-
-        </script>
-
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="js/inicio.js" type="text/javascript"></script>
+    <script src="js/Adopta.js" type="text/javascript"></script>
+   
 </body>
 </html>
-
 

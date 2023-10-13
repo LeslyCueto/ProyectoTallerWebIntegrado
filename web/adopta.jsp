@@ -28,10 +28,11 @@
 
 
     <!-- Mis Estilos -->
-    <link href="css/Adopta.css" rel="stylesheet" type="text/css"/>
+    <link href="css/adopta.css" rel="stylesheet" type="text/css"/>
     <title>Adopta</title>
 </head>
 <body>
+    
 <section class="principal">
     <div class="hm-wrapper">
 
@@ -45,7 +46,8 @@
 
                     <div class="hm-logo">
                         <a href="#">
-                            <img src="Cat cafe.png" alt="">
+                            <img src="imagenes/Cat cafe.png" alt=""/>
+                           
                         </a>
                     </div>
 
@@ -104,17 +106,20 @@
             <h2 class="subtitle">¿Por que deberias adoptar?</h2>
             <div class="about__main">
                 <article class="about__icons">
-                    <img src="./images/shapes.svg" class="about__icon">
+                    <img src="imagenes/GATO4.jpg" class="about__icon" alt=""/>
+               
                     <h3 class="about__title">Los gatos son bastante ordenados, les gustan las rutinas</h3>
                 </article>
 
                 <article class="about__icons">
-                    <img src="./images/paint.svg" class="about__icon">
+                    <img src="imagenes/gatoo.jpg" class="about__icon" alt=""/>
+                
                     <h3 class="about__title">Se puede entretener con cualquier cosa</h3>
                 </article>
 
                 <article class="about__icons">
-                    <img src="./images/code.svg" class="about__icon">
+                    <img src="imagenes/Gatos-enanos.jpg" class="about__icon" alt=""/>
+                
                     <h3 class="about__title">Suelen ser muy silenciosos y tranquilos</h3>
                 </article>
             </div>
@@ -151,7 +156,7 @@
         
                             <div>
                                     <picture>
-                                        <img src="descarga.jpeg" alt="imagen">
+                                        <img src="imagenes/GAT3.jpg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -164,20 +169,21 @@
     
                                   
                                     <picture>
-                                        <img src="Gatos-enanos.jpg"imagen">
+   
+                                        <img src="imagenes/GATO2.jpg" alt="imagen"/>
                                     </picture>
                                 </a>
-        
+    
                             </div>
         
                         </div>
                         <div class="carrusel">
-        
+       
                             <div>
         
-                                 
                                     <picture>
-                                        <img src="Gatos-enanos.jpg" alt="imagen">
+                                        <img src="imagenes/GATO4.jpg" alt="imagen"/>
+ 
                                     </picture>
                                 </a>
         
@@ -190,7 +196,7 @@
         
                           
                                     <picture>
-                                        <img src="gato_pequexo_crop1630166426489.jpeg_423682103.webp" alt="imagen">
+                                        <img src="imagenes/GATO8.jpeg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -203,7 +209,7 @@
         
            
                                     <picture>
-                                        <img src="Gatos-enanos.jpg" alt="imagen">
+                                        <img src="imagenes/Gatos-enanos.jpg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -213,11 +219,8 @@
                         <div class="carrusel">
         
                             <div>
-        
-                             
-                             
                                     <picture>
-                                        <img src="12_razas_de_gatos_finos_24255_orig.jpg" alt="imagen">
+                                        <img src="imagenes/GATO6.jpeg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -227,11 +230,9 @@
                         <div class="carrusel">
         
                             <div>
-        
-                              
-                              
+
                                     <picture>
-                                        <img src="gato_pequexo_crop1630166426489.jpeg_423682103.webp" alt="imagen">
+                                        <img src="imagenes/GATO6.jpg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -241,11 +242,8 @@
                         <div class="carrusel">
         
                             <div>
-        
-                              
-                                  
                                     <picture>
-                                        <img src="Gatos-enanos.jpg" alt="imagen">
+                                        <img src="imagenes/GATO7.jpeg" alt="imagen"/>
                                     </picture>
                                 </a>
         
@@ -253,21 +251,24 @@
         
                         </div>
                         <div class="carrusel">
-        
                             <div>
-        
-                               
-                                 
                                     <picture>
-                                        <img src="gato_pequexo_crop1630166426489.jpeg_423682103.webp" alt="imagen">
+                                        <img src="imagenes/GATO5.jpeg" alt="imagen"/>
                                     </picture>
                                 </a>
-        
                             </div>
         
                         </div>
+                         <div class="carrusel">
+                            <div>
+                                    <picture>
+                                        <img src="imagenes/GATO9.jpg" alt="imagen"/>
+                                    </picture>
+                                </a>
+                            </div>
         
-                        
+                        </div>
+                  
         
                     </div>
         

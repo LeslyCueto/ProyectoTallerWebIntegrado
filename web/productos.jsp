@@ -44,7 +44,7 @@
     
                         <div class="hm-logo">
                             <a href="#">
-                                <img src="Cat cafe.png" alt="">
+                                <img src="imagenes/Cat cafe.png" alt="">
                             </a>
                         </div>
     
@@ -74,10 +74,37 @@
                                         <div class="total-title">Total</div>
                                         <div class="total-price">$0</div>
                                     </div>
-                                    <button type="button" class="btn-buy">Pagar</button>
+                                <button id="btn-abrir-popup"type="button" class="btn-buy">Finalizar compra</button>
+                                    
                                     <i class="bx bx-x" id="close-cart"></i>
                     
                                 </div> 
+                                <div class="overlay" id="overlay">
+                                    <div class="popup" id="popup">
+                                        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                                        <h3> Medio de pago</h3>
+                                        
+                                        <form action="">
+                                            <div class="contenedor-inputs">
+                                                <input type="text" placeholder="Numero de tarjeta">
+                                                <input type="text" placeholder="Nombre del titular">
+                                                <input type="number" placeholder="Fecha de vencmiento (MM/AA)">
+
+                                            </div>
+                                            <input onclick="pagar()" type="submit" class="btn-submit" value="Pagar">
+                                            <script>
+                                                function pagar() {
+                                                    Swal.fire({
+                                                        title: "Pago confirmado",
+                                                        icon: "success",
+                                                        confirmButtonText: "Continuar"
+                                                    });
+                                                }
+                                            </script>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
                                
                                 <div class="icon-menu">
                                     <button type="button"><i class="fas fa-bars"></i></button>
@@ -144,7 +171,7 @@
                     <i class="bx bx-cart-alt add-cart"></i>
                 </div>
                 <div class="product-box">
-                    <img src="imagenes/americano-3_400x.webp" alt="" class="product-img">
+                    <img src="imagenes/Americano_nobg.png" alt="product-img"/>
                     <h2 class="product-title">Americano</h2>
                     <span class="price">$9.00</span>
                     <i class="bx bx-cart-alt add-cart"></i>
@@ -191,7 +218,8 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <a href="imagenes/cafe expre.avif" alt="imagen" ></a>
+  
                                         </picture>
                                     </a>
             
@@ -205,7 +233,7 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/cafe cortado.png" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -219,7 +247,7 @@
                                     <a href="/">
                                         <h4> </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/pstre3.jpg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -233,7 +261,8 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/postre5.jpeg" alt="imagen"/>
+                                            
                                         </picture>
                                     </a>
             
@@ -247,7 +276,7 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/enpanada.jpeg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -261,7 +290,7 @@
                                     <a href="/">
                                         <h4> </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/galletaschip.jpg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -275,7 +304,7 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/sandwish de queso.jpeg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -289,7 +318,7 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/postre.jpeg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -303,7 +332,7 @@
                                     <a href="/">
                                         <h4>  </h4>
                                         <picture>
-                                            <img src="imagenes/americano-3_400x.webp" alt="imagen">
+                                            <img src="imagenes/postre1.jpg" alt="imagen"/>
                                         </picture>
                                     </a>
             
@@ -336,7 +365,7 @@
 
  
 <section class="contenido3">
-    <h2 class="subtitle">Acompaña tu cafe con</h2>
+    <h2 class="subtitle">Mas opciones</h2>
     <div class="button-container">
         <button id="button1">Te</button>
         <button id="button2">Sandwish</button>
@@ -347,22 +376,23 @@
     
     <div class="shop-content">
         <div class="product-box">
-            <img src="imagenes/manzanilla.jpg" alt="" class="product-img">
+            <img src="imagenes/manzanilla.jpg" alt="" class="product-img"/>
             <h2 class="product-title">Manzanilla</h2>
             <span class="price">$3.00</span>
-            <i class="bx bx-shopping-bag add-cart"></i>
+            <i class="bx bx-cart-alt add-cart"></i>
         </div>
         <div class="product-box">
-            <img src="imagenes/aniz.jpg" alt="" class="product-img">
-            <h2 class="product-title">Aniz</h2>
+            
+  <img src="imagenes/manzanilla.jpg" alt="" class="product-img"/>
+            <h2 class="product-title">Anis</h2>
             <span class="price">$3.00</span>
-            <i class="bx bx-shopping-bag add-cart"></i>
+            <i class="bx bx-cart-alt add-cart"></i>
         </div>
         <div class="product-box">
             <img src="imagenes/te puro.jpeg" alt="" class="product-img">
             <h2 class="product-title">Te puro</h2>
             <span class="price">$8.00</span>
-            <i class="bx bx-shopping-bag add-cart"></i>
+            <i class="bx bx-cart-alt add-cart"></i>
         </div>
         
        
@@ -381,19 +411,19 @@
                 <img src="imagenes/sandwish de queso.jpeg" alt="" class="product-img">
                 <h2 class="product-title">Sandwish de queso</h2>
                 <span class="price">$5.00</span>
-                <i class="bx bx-shopping-bag add-cart"></i>
+                <i class="bx bx-cart-alt add-cart"></i>
             </div>
             <div class="product-box">
                 <img src="imagenes/sandwish de jamon.jpeg" alt="" class="product-img">
                 <h2 class="product-title">Sandwish de jamon</h2>
                 <span class="price">$5.00</span>
-                <i class="bx bx-shopping-bag add-cart"></i>
+                <i class="bx bx-cart-alt add-cart"></i>
             </div>
             <div class="product-box">
                 <img src="imagenes/enpanada.jpeg" alt="" class="product-img">
                 <h2 class="product-title">Enpanada</h2>
                 <span class="price">$8.00</span>
-                <i class="bx bx-shopping-bag add-cart"></i>
+                <i class="bx bx-cart-alt add-cart"></i>
             </div>
             
            
@@ -413,7 +443,7 @@
                 <div class="info">
                     <h3>Días especiales</h3>
                     <p>Sabados y Jueves 7am - 11pm</p>
-                    <p>+3123410921</p>
+                    <p>923678431</p>
                 </div>
                 <div class="info">
                     <h3>Horarios</h3>
@@ -443,6 +473,8 @@
     
     <!-- Animaciones : AOS-->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <!-- Mi Script -->
  

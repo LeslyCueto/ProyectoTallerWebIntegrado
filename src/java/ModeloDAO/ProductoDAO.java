@@ -41,16 +41,17 @@ public class ProductoDAO implements CRUDproductos{
         }
         return Lista;
     }
-
+    
     @Override
-    public Productos Obtener(String id) {
+    public Productos Obtener(int id) {
         String consulta = "select * from productos where idproducto=?";
         try {
             con = conexion.getConnection();
             ps = con.prepareStatement(consulta);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             if (rs.next()) {
+                p.setIdproductos(rs.getInt("idproducto"));
                 p.setNombreproducto(rs.getString("nombreproducto"));
                 p.setIdcategoria(rs.getInt("idcategoria"));
                 p.setDescripcion(rs.getString("descripcion"));
@@ -69,7 +70,7 @@ public class ProductoDAO implements CRUDproductos{
 
     @Override
     public boolean Agregar(Productos prod) {
-        String sqlinsert = "insert into productos values(?,?,?,?,?,?,?,'S')";
+        String sqlinsert = "insert into productos(nombreproducto,idCategoria,descripcion,cantidadproducto,preciounidad,fechavencimiento,stock,indicador) values (?,?,?,?,?,?,?,'S')";
         try {
             con = conexion.getConnection();
             ps = con.prepareStatement(sqlinsert);
@@ -110,12 +111,12 @@ public class ProductoDAO implements CRUDproductos{
     }
 
     @Override
-    public boolean Eliminar(String id) {
+    public boolean Eliminar(int id) {
         String sqleliminar = "update productos set indicador='N' where idproducto=?";
         try {
             con = conexion.getConnection();
             ps = con.prepareStatement(sqleliminar);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
 
         } catch (Exception ex) {

@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface CRUDproductos {
     public List ListarProductos();
-    public Productos Obtener(String id);
+    public Productos Obtener(int id);
     public boolean Agregar(Productos prod);
     public boolean Editar(Productos prod);    
-    public boolean Eliminar(String id);
+    public boolean Eliminar(int id);
 }

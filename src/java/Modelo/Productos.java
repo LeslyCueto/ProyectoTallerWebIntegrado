@@ -3,7 +3,7 @@ package Modelo;
 public class Productos{
 //atributos
     
-    private int idproductos;
+    private int idproducto;
     private String nombreproducto;
     private String descripcion;
     private int idcategoria;
@@ -20,7 +20,7 @@ public class Productos{
     
 
     public Productos(int idproductos, String nombreproducto, String descripcion, int idcategoria, String cantidadproducto, double preciounidad, String fechavencimiento, int stock) {
-        this.idproductos = idproductos;
+        this.idproducto = idproductos;
         this.nombreproducto = nombreproducto;
         this.descripcion = descripcion;
         this.idcategoria = idcategoria;
@@ -35,11 +35,11 @@ public class Productos{
    //getters and setters
 
     public int getIdproductos() {
-        return idproductos;
+        return idproducto;
     }
 
-    public void setIdproductos(int idproductos) {
-        this.idproductos = idproductos;
+    public void setIdproductos(int idproducto) {
+        this.idproducto = idproducto;
     }
 
     public String getNombreproducto() {
@@ -110,7 +110,7 @@ public class Productos{
    
    //array
     public Object[]RegistroProducto(int numeracion){
-        Object[] fila={numeracion,idproductos,nombreproducto,idcategoria,cantidadproducto,preciounidad,fechavencimiento,stock};
+        Object[] fila={numeracion,idproducto,nombreproducto,idcategoria,cantidadproducto,preciounidad,fechavencimiento,stock};
         return fila;
     }
    

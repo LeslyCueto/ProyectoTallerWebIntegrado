@@ -54,7 +54,7 @@
                 <li><a href="index.jsp">Inicio</a></li>
                 <li><a href="nosotros.jsp">Nosotros</a></li>
                 <li><a href="productos.jsp">Productos</a></li>
-                <li><a href="">Contacto</a></li>
+                <li><a href="contacto.jsp">Contacto</a></li>
                 <li><a href="adopta.jsp">Adopta</a></li>
                 <li><a href="index_intranet.jsp">Iniciar Sesion</a></li>
                         </ul>
@@ -86,8 +86,8 @@
             <ul>
                <li><a href="index.jsp">Inicio</a></li>
                 <li><a href="nosotros.jsp">Nosotros</a></li>
-                <li><a href="">Productos</a></li>
-                <li><a href="">Contacto</a></li>
+                <li><a href="productos.jsp">Productos</a></li>
+                <li><a href="contacto.jsa">Contacto</a></li>
                 <li><a href="">Adopta</a></li>
                 <li><a href="">Iniciar Sesion</a></li>
             </ul>

@@ -305,7 +305,7 @@
                     
                     <%
                     ProductoDAO dao = new ProductoDAO();
-                    int idprod = (int) Integer.parseInt("idprod");
+                    String idprod = (String) request.getAttribute("idprod");
                     Productos p = dao.Obtener(idprod);
                     %>
 

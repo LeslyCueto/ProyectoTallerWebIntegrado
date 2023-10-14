@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controlador;
 
 import Modelo.*;
@@ -23,7 +19,7 @@ public class ControladorProductos extends HttpServlet {
     String vistaeditarprod="editar_productos.jsp";
     Productos p = new Productos();
     ProductoDAO dao = new ProductoDAO(); 
-    int id;
+    String id;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,10 +43,10 @@ public class ControladorProductos extends HttpServlet {
             dao.Editar(p);
             acceso=vistalistaprod;
         }else if (accion.equalsIgnoreCase("eliminar")){
-            id = Integer.parseInt("idprod");
+            id = request.getParameter("idprod");
             dao.Eliminar(id);
             acceso=vistalistaprod;
-        }        
+        }       
         
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
@@ -74,9 +70,9 @@ public class ControladorProductos extends HttpServlet {
     }// </editor-fold>
     
     private void LeerDatosProductos(HttpServletRequest request, HttpServletResponse response) {
-        p.setIdproductos(Integer.parseInt("idproducto"));
+        p.setIdproductos(request.getParameter("idproducto"));
         p.setNombreproducto(request.getParameter("nombreproducto"));
-        p.setIdcategoria(Integer.parseInt("idcategoria"));
+        p.setIdcategoria(request.getParameter("idcategoria"));
         p.setDescripcion(request.getParameter("descripcion"));
         p.setCantidadproducto(request.getParameter("cantidadproducto"));
         p.setPreciounidad(Double.parseDouble("preciounidad"));

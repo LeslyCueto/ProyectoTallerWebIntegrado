@@ -3,10 +3,10 @@ package Modelo;
 public class Productos{
 //atributos
     
-    private int idproducto;
+    private String idproducto;
     private String nombreproducto;
     private String descripcion;
-    private int idcategoria;
+    private String idcategoria;
     private String cantidadproducto;
     private double preciounidad;
     private String fechavencimiento;
@@ -17,28 +17,14 @@ public class Productos{
 
     public Productos() {
     }
-    
-
-    public Productos(int idproductos, String nombreproducto, String descripcion, int idcategoria, String cantidadproducto, double preciounidad, String fechavencimiento, int stock) {
-        this.idproducto = idproductos;
-        this.nombreproducto = nombreproducto;
-        this.descripcion = descripcion;
-        this.idcategoria = idcategoria;
-        this.cantidadproducto = cantidadproducto;
-        this.preciounidad = preciounidad;
-        this.fechavencimiento = fechavencimiento;
-        this.stock = stock;
-        this.indicador = indicador;
-    }
-
    
    //getters and setters
 
-    public int getIdproductos() {
+    public String getIdproductos() {
         return idproducto;
     }
 
-    public void setIdproductos(int idproducto) {
+    public void setIdproductos(String idproducto) {
         this.idproducto = idproducto;
     }
 
@@ -58,11 +44,11 @@ public class Productos{
         this.descripcion = descripcion;
     }
 
-    public int getIdcategoria() {
+    public String getIdcategoria() {
         return idcategoria;
     }
 
-    public void setIdcategoria(int idcategoria) {
+    public void setIdcategoria(String idcategoria) {
         this.idcategoria = idcategoria;
     }
 

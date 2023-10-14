@@ -306,13 +306,18 @@
                 <form method="POST" action="ControladorProductos" >
                     
                 <div class="form-group">
+                   <label for="exampleInputEmail1">ID Producto</label>
+                   <input type="text" class="form-control" id="idproducto" name="idproducto" aria-describedby="emailHelp" placeholder="Ej. PROD006">
+                 </div>    
+                    
+                <div class="form-group">
                    <label for="exampleInputEmail1">Nombre</label>
                    <input type="text" class="form-control" id="nombreproducto" name="nombreproducto" aria-describedby="emailHelp" placeholder="Ingresar nombre del producto">
                  </div>    
                     
                  <div class="form-group">
                   <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(1), Sandwiches(2), Postres(3), Adicionales(4)">
+                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(C1), Sandwiches(C2), Postres(C3), Adicionales(C4)">
                  </div>
  
                  <div class="form-group">

@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package Interfaces;
+import Modelo.Usuarios;
+import java.util.List;
 
-/**
- *
- * @author Lesly
- */
 public interface CRUDusuarios {
+    public List ListarUsuarios();
+    public Usuarios Obtener(String id);
+    public boolean Agregar(Usuarios usu);
+    public boolean Editar(Usuarios usu);    
+    public boolean Eliminar(String id);
     
 }

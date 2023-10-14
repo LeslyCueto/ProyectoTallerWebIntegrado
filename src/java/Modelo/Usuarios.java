@@ -3,32 +3,27 @@ package Modelo;
 public class Usuarios {
 
     //Atributos
-    private int idUsuario;
+    private String idUsuario;
     private String nombre;
     private String apellido;
     private String passcode;
+    private String dni;
     private String telefono;
     private String direccion;
     private String indicador;
 
     //Constructor
 
-    public Usuarios(int idUsuario, String nombre, String apellido, String passcode, String telefono, String direccion, String indicador) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.passcode = passcode;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.indicador = indicador;
+    public Usuarios() {
     }
+    
 
-    //getters y setters
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    //getters y setters
+    public void setIdUsuario(String idUsuario) {    
         this.idUsuario = idUsuario;
     }
 
@@ -80,10 +75,19 @@ public class Usuarios {
         this.indicador = indicador;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+    
+
     
      //array
      public Object[]RegistroUsuario(int numeracion){
-        Object[] fila={numeracion,idUsuario,nombre,apellido,passcode,direccion,telefono};
+        Object[] fila={numeracion,idUsuario,nombre,apellido,passcode,dni,direccion,telefono};
         return fila;
     }
 

@@ -272,7 +272,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <i class="fa-regular fa-circle-user" style="color: #2D572C;"></i>
                                
                             </a>
@@ -310,22 +310,26 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar usuario</h1>
                     
-                 <form method="POST" action="lista_usuarios.jsp">
+                 <form method="POST" action="ControladorUsuarios">
+                 <div class="form-group">
+                   <label for="exampleInputEmail1">ID Usuario</label>
+                   <input name="idUsuario" type="text" class="form-control" id="idUsuario" aria-describedby="emailHelp" placeholder="Ej. U004">
+                 </div>
                  <div class="form-group">
                    <label for="exampleInputEmail1">Nombres</label>
-                   <input name="nombreusuario" type="text" class="form-control" id="nombreusuario" aria-describedby="emailHelp" placeholder="Ingresar nombres">
+                   <input name="nombre_usuario" type="text" class="form-control" id="nombre_usuario" aria-describedby="emailHelp" placeholder="Ingresar nombres">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Apellidos</label>
-                  <input name="apellidousuario" type="text" class="form-control" id="apellidousuario" placeholder="Ingresar apellidos">
+                  <input name="apellido_usuario" type="text" class="form-control" id="apellido_usuario" placeholder="Ingresar apellidos">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Contraseña</label>
-                  <input name="password" type="text" class="form-control" id="password" placeholder="Ingresa una contraseña para logearte">
+                  <input name="passcode" type="text" class="form-control" id="passcode" placeholder="Ingresa una contraseña para logearte">
                  </div>    
                  <div class="form-group">
                   <label for="exampleInputPassword1">Dni</label>
-                  <input name="dniusuario" type="text" class="form-control" id="dniusuario" placeholder="ej. 73796530">
+                  <input name="usuario_dni" type="text" class="form-control" id="usuario_dni" placeholder="ej. 73796530">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Dirección</label>
@@ -336,8 +340,7 @@
                   <input name="telefono" type="text" class="form-control" id="telefono" placeholder="ej. 993192986">
                  </div>
                 
-                     <button name="enviar" type="submit" id="enviar" value="Enviar" class="btn btn-primary">Agregar</button> &nbsp;
-                     <button name="eliminar" type="reset" id="eliminar" value="Eliminar" class="btn btn-primary">Borrar</button> &nbsp;
+                     <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button> &nbsp;
                      <a href="lista_usuarios.jsp">  Revisar lista</a>
                 </form>
 

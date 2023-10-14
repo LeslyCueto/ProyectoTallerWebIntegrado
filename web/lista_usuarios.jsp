@@ -1,8 +1,7 @@
-<%-- 
-    Document   : lista_usuarios
-    Created on : 10 oct. 2023, 17:51:28
-    Author     : Lesly
---%>
+<%@page import="java.util.Iterator" %>
+<%@page import="Modelo.Usuarios" %>
+<%@page import="java.util.List" %>
+<%@page import="ModeloDAO.UsuariosDAO" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -275,7 +274,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION["nombreusuario"]." ".$_SESSION['apellidousuario']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <i class="fa-regular fa-circle-user" style="color: #2D572C;"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -319,44 +318,11 @@
                     
                     <a href="admin_usuarios.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Agregar Usuario</a><br>
-                    
-                    <script>
-                    function advertencia(){
-                        var not=confirm("Seguro que deceas eliminar");
-                        return not;
-                    } 
-                    </script>
-                    
-                    
-                   <!--  ELIMINAR DATOS-->
-                   <?php  
-                   if(isset($_GET['id'])){
-                   $id=$_GET['id'];
-                   $consulta="delete from usuarios where idusuario=$id";
-                   $eliminar= mysqli_query($con, $consulta);?>
-                   
-                    <script>
-                    swal({
-                    title: "Completo!",
-                    text: "El usuario se eliminó correctamente!",
-                    icon: "success",
-                    button: "Ok!",
-                    });
-                    </script>
-               
-                   
-                    <script>
-                    setTimeout(()=>{
-                        window.history.replaceState(null,null,window.location.pathname);
-                    }, 0);
-                    </script>                   
-                   <?php } ?> 
-                    
-                    
-                    
+                
                     
                     <!-- DataTales Example -->
                     <br>
+                    <form method="POST" action="">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Usuarios registrados</h6>
@@ -366,7 +332,6 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>N°</th>
                                             <th>Código</th>
                                             <th>Nombre</th>
                                             <th>Apellidos</th>
@@ -381,7 +346,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>N°</th>
                                             <th>Código</th>
                                             <th>Nombre</th>
                                             <th>Apellidos</th>
@@ -397,31 +361,45 @@
                                         while ($fila= mysqli_fetch_assoc($lista)){
                                             $numeracion++;
                                         ?>
-                                    <tbody>
-                                    <td><?php say($numeracion)?> </td>
-                                    <td><?php say($fila['idusuario'])?> </td>
-                                    <td><?php say($fila['nombreusuario'])?> </td>
-                                    <td><?php say($fila['apellidousuario'])?> </td>
-                                    <td><?php say($fila['password'])?> </td>
-                                    <td><?php say($fila['dniusuario'])?> </td>
-                                    <td><?php say($fila['direccion'])?> </td>
-                                    <td><?php say($fila['telefono'])?> </td>
+                        <tbody>
+                        <!-- JS CODE -->    
+                        <%
+                        UsuariosDAO dao= new UsuariosDAO();
+                        List<Usuarios> lista = dao.ListarUsuarios();
+                        Iterator<Usuarios> iter = lista.iterator();
+                        Usuarios u= null;
+                        while(iter.hasNext()){
+                        u=iter.next();
+                        
+                        %>
+                                    
+                        <tr>    
+                                    <td><%= u.getIdUsuario() %></td>
+                                    <td><%= u.getNombre() %></td>
+                                    <td><%= u.getApellido() %></td>
+                                    <td><%= u.getPasscode() %></td>
+                                    <td><%= u.getDni() %></td>
+                                    <td><%= u.getDireccion() %></td>
+                                    <td><%= u.getTelefono() %></td>
                                     <td>
-                                        <a onclick="return advertencia()" href="usuarios.php?id=<?=$fila['idusuario']?>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="ControladorUsuarios?accion=eliminar&idusu=<%= u.getIdUsuario() %>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                     <td>
-                                        <a onclick="" href="" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a  href="ControladorUsuarios?accion=editar&idusu=<%= u.getIdUsuario() %>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
                                     </td>
-                                    </tbody>
-                                    <?php } ?>
+                        </tr>
+                                    
+                         <%}%>
+                        </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+                    </form>
 
                 </div>
                 <!-- /.container-fluid -->
-
+               
             </div>
             <!-- End of Main Content -->
 

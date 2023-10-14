@@ -62,7 +62,8 @@ public class ClientesDAO implements CRUDclientes{
             JOptionPane.showMessageDialog(null,
                     "ERROR no se puede recuperar el cliente... " + ex);
         }
-        return c;}
+        return c;
+    }
 
     @Override
     public boolean Agregar(Clientes cli) {
@@ -81,7 +82,8 @@ public class ClientesDAO implements CRUDclientes{
             JOptionPane.showMessageDialog(null,
                     "ERROR no se puede insertar el cliente " + ex);
         }
-        return false;}
+        return false;
+    }
 
     @Override
     public boolean Editar(Clientes cli) {

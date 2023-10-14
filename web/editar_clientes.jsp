@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agregar cliente</title>
+    <title>Editar cliente</title>
 
     <!-- Custom fonts for this template-->
     <link href="INTRANET/intranet/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>

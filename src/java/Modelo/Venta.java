@@ -1,73 +1,81 @@
 package Modelo;
+import Config.*;
+import java.sql.*;
+
 public class Venta {
-    private String nombrecliente;
-    private String nombreprod;
-    private int idventa;
-    private int idcliente;
-    private int idproducto;
-    private int cantidadprod;
-    private int preciounidadprod;
+    
+    //llamando base de datos para obtener los datos del producto
+    Conexion conexion = new Conexion();
+    Connection con = conexion.getConnection();
+    PreparedStatement ps;
+    ResultSet rs; 
+    
+    //atributos
+    private String idventa;
+    private String fechaventa;
+    private String idCliente;
+    private String idUsuario;
+    private String idproducto;
+    private int cantidadventa;
     private double subtotal;
     private double igv;
     private double totalpagar;
     private double efectivo;
     private double cambio;
     private String indicador;
-    
-    
-    
-    //constructor
-    
-    
-    public Venta(String nombrecliente, String nombreprod, int idventa, int idcliente, int idproducto, int cantidadprod, int preciounidadprod, double subtotal, double igv, double totalpagar, double efectivo, double cambio, String indicador){
-        this.nombrecliente = nombrecliente;
-        this.nombreprod = nombreprod;
-        this.idventa = idventa;
-        this.idcliente = idcliente;
-        this.idproducto = idproducto;
-        this.cantidadprod = cantidadprod;
-        this.preciounidadprod = preciounidadprod;
-        this.subtotal = subtotal;
-        this.igv = igv;
-        this.totalpagar = totalpagar;
-        this.efectivo = efectivo;
-        this.cambio = cambio;
-        this.indicador = indicador;
-    }
-    
-    
-    //getters and setters 
 
-    public int getIdventa() {
+    // Constructor
+    public Venta() {
+    }
+
+    // Getters and setters
+
+    public String getIdventa() {
         return idventa;
     }
 
-    public void setIdventa(int idventa) {
+    public void setIdventa(String idventa) {
         this.idventa = idventa;
     }
 
-    public int getIdcliente() {
-        return idcliente;
+    public String getFechaventa() {
+        return fechaventa;
     }
 
-    public void setIdcliente(int idcliente) {
-        this.idcliente = idcliente;
+    public void setFechaventa(String fechaventa) {
+        this.fechaventa = fechaventa;
     }
 
-    public int getIdproducto() {
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getIdproducto() {
         return idproducto;
     }
 
-    public void setIdproducto(int idproducto) {
+    public void setIdproducto(String idproducto) {
         this.idproducto = idproducto;
     }
 
-    public int getCantidadprod() {
-        return cantidadprod;
+    public int getCantidadventa() {
+        return cantidadventa;
     }
 
-    public void setCantidadprod(int cantidadprod) {
-        this.cantidadprod = cantidadprod;
+    public void setCantidadventa(int cantidadventa) {
+        this.cantidadventa = cantidadventa;
     }
 
     public double getSubtotal() {
@@ -75,7 +83,6 @@ public class Venta {
     }
 
     public void setSubtotal(double subtotal) {
-        subtotal=cantidadprod*preciounidadprod;
         this.subtotal = subtotal;
     }
 
@@ -84,7 +91,6 @@ public class Venta {
     }
 
     public void setIgv(double igv) {
-        igv=subtotal+(subtotal*0.18);
         this.igv = igv;
     }
 
@@ -93,7 +99,6 @@ public class Venta {
     }
 
     public void setTotalpagar(double totalpagar) {
-        totalpagar=igv;
         this.totalpagar = totalpagar;
     }
 
@@ -110,7 +115,6 @@ public class Venta {
     }
 
     public void setCambio(double cambio) {
-        cambio=efectivo-totalpagar;
         this.cambio = cambio;
     }
 
@@ -121,36 +125,68 @@ public class Venta {
     public void setIndicador(String indicador) {
         this.indicador = indicador;
     }
+    
+    
 
-    public String getNombrecliente() {
-        return nombrecliente;
+    // TRAER DATOS DE LA BASE DE DATOS: STOCK Y PRECIO POR UNIDAD
+    public void obtenerDatosProductoDesdeBD(String idProducto) {
+        String consulta = "SELECT preciounidad, stock FROM productos WHERE idproducto = ?";
+        try {
+            con = conexion.getConnection();
+            ps = con.prepareStatement(consulta);
+            ps.setString(1, idProducto);
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                double precio = resultSet.getDouble("preciounidad");
+                int stock = resultSet.getInt("stock");
+                calcularSubtotal(precio);
+                
+                int updatedStock = stock - cantidadventa;
+                actualizarStockProductoEnBD(idProducto, updatedStock);
+            } else {
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // ACTUALIZAR STOCK
+        public void actualizarStockProductoEnBD(String idProducto, int nuevoStock) {
+        String consulta = "UPDATE productos SET stock = ? WHERE idproducto = ?";
+        try {
+            ps = con.prepareStatement(consulta);
+            ps.setInt(1, nuevoStock);
+            ps.setString(2, idProducto);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setNombrecliente(String nombrecliente) {
-        this.nombrecliente = nombrecliente;
+    
+ 
+    
+    //METODOS PROPIOS
+
+    // CALCULAR EL SUBTOTAL
+    public void calcularSubtotal(double precio) {
+        this.subtotal = cantidadventa * precio;
     }
 
-    public String getNombreprod() {
-        return nombreprod;
+    // CALCULAR EL IGV
+    public void calcularIGV() {
+        this.igv = subtotal * 0.18; // IGV rate is 18%
     }
 
-    public void setNombreprod(String nombreprod) {
-        this.nombreprod = nombreprod;
-    }
-
-    public int getPreciounidadprod() {
-        return preciounidadprod;
-    }
-
-    public void setPreciounidadprod(int preciounidadprod) {
-        this.preciounidadprod = preciounidadprod;
+    // CALCULAR EL TOTAL
+    public void calcularTotal() {
+        this.totalpagar = subtotal + igv;
     }
     
     
-    //array
-    public Object[] RegistroVenta(int numeracion) {
-        Object[] fila ={numeracion,idventa,nombrecliente,nombreprod,cantidadprod,preciounidadprod,subtotal,igv,totalpagar,efectivo,cambio};
-        return fila;
-    }
     
-}
+    
+    }
+

@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package Interfaces;
 
-/**
- *
- * @author Lesly
- */
+import Modelo.Venta;
+import java.util.List;
+
 public interface CRUDventas {
+    public List ListarVentas();
+    public Venta Obtener(String id);
+    public boolean Agregar(Venta vent);
+    public boolean Editar(Venta vent);    
+    public boolean Eliminar(String id);
     
 }

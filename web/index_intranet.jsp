@@ -81,7 +81,7 @@
 
             <!-- Nav -REPORTE DE VENTAS -->
             <li class="nav-item">
-                <a class="nav-link" href="admin_ventas.jsp">
+                <a class="nav-link" href="lista_ventas.jsp">
                     <i class="fa-solid fa-file-invoice"></i>
                     <span> Reporte de Ventas</span></a>
             </li>

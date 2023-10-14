@@ -1,3 +1,8 @@
+<%@page import="java.util.Iterator" %>
+<%@page import="Modelo.Venta" %>
+<%@page import="java.util.List" %>
+<%@page import="ModeloDAO.VentasDAO" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,17 +15,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrar ventas</title>
+    <title>Reporte de ventas</title>
 
     <!-- Custom fonts for this template-->
     <link href="INTRANET/intranet/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7871faee3a.js" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template-->
     <link href="INTRANET/intranet/css/sb-admin-2.min.css" rel="stylesheet" type="text/css"/>
-    <script src="https://kit.fontawesome.com/7871faee3a.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -32,7 +37,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
+<!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index_intranet.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fa-solid fa-cat"></i>
@@ -42,6 +47,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+
             <!-- Nav Item INICIO -->
             <li class="nav-item active">
                 <a class="nav-link" href="index_intranet.jsp">
@@ -80,11 +86,12 @@
                     <i class="fa-solid fa-file-invoice"></i>
                     <span> Reporte de Ventas</span></a>
             </li>
-            
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -300,77 +307,75 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Realizar venta</h1>
-                    
-                <form method="POST" action="ControladorVentas" >
-                    
-                <div class="form-group">
-                   <label for="exampleInputEmail1">ID Venta:</label>
-                   <input type="text" class="form-control" id="idventa" name="idventa" aria-describedby="emailHelp" placeholder="Ej. V002">
-                 </div> 
-                    
-                <div class="form-group">
-                 <label for="exampleInputPassword1" class="form-label">Fecha:</label>
-                 <input type="date" name="fechaventa" class="form-control" id="fechaventa" >
-                 </div>  
-                
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Cantidad Vendida</label>
-                  <input type="text" class="form-control" id="cantidadventa" name="cantidadventa" placeholder="Cafe(C1), Sandwiches(C2), Postres(C3), Adicionales(C4)">
-                 </div>    
-                    
-                <div class="form-group">
-                   <label for="exampleInputEmail1">ID Cliente</label>
-                   <input type="text" class="form-control" id="idCliente" name="idCliente" aria-describedby="emailHelp" placeholder="Ingresar el ID del cliente">
-                 </div>    
-                    
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(C1), Sandwiches(C2), Postres(C3), Adicionales(C4)">
-                 </div>
- 
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Subtotal</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ej. Cafe Pasado, Torta 3 leches, etc..">
-                 </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Reporte de ventas</h1>
                      
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">IGV</label>
-                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" placeholder="ej. 10 cajas x 30 bolsas/envases">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Total</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                  <div class="form-group">
-                  <label for="exampleInputPassword1">Efectivo</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Cambio</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Cliente</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Producto</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Usuario</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <br>    
-                 <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
+                    </div>
+                    
+    <a href="ControladorVentas?accion=add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Realizar Venta</a><br>
+                                    
+
+    <!-- DataTales Example -->
+   <br>
+   <form method="POST" action="">
+     <div class="card shadow mb-4">
+     <div class="card-header py-3">
+     <h6 class="m-0 font-weight-bold text-primary">Ventas registradas</h6> 
+     </div>
+                        
+    <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID Venta</th>
+                <th>Fecha de venta</th>
+                <th>Cantidad vendida</th>
+                <th>Subtotal</th>
+                <th>IGV</th>
+                <th>Total</th>
+                <th>Efectivo</th>
+                <th>Cambio</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Vendedor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS CODE -->    
+                        <%
+                        VentasDAO dao= new VentasDAO();
+                        List<Venta> lista = dao.ListarVentas();
+                        Iterator<Venta> iter = lista.iterator();
+                        Venta v= null;
+                        while(iter.hasNext()){
+                        v=iter.next();
+                        
+                        %>
+                <tr>
+                    <td><%= v.getIdventa() %></td>
+                    <td><%= v.getFechaventa() %></td>
+                    <td><%= v.getCantidadventa() %></td>
+                    <td><%= v.getSubtotal() %></td>
+                    <td><%= v.getIgv() %></td>
+                    <td><%= v.getTotalpagar() %></td>
+                    <td><%= v.getEfectivo() %></td>
+                    <td><%= v.getCambio() %></td>
+                    <td><%= v.getIdCliente() %></td>
+                    <td><%= v.getIdproducto() %></td>
+                    <td><%= v.getIdUsuario() %></td>
+                </tr>
+                <%}%>
+        </tbody>
+    </table>
+                            </div>
+                        </div>
+                    </div>
                 </form>
-                    <br> 
-                    <br> 
-
-
-                </div>
+</div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -433,13 +438,12 @@
     <!-- Page level custom scripts -->
     <script src="INTRANET/intranet/js/demo/chart-area-demo.js" type="text/javascript"></script>
     <script src="INTRANET/intranet/js/demo/chart-pie-demo.js" type="text/javascript"></script>
-    
-    
+    <script src="INTRANET/intranet/vendor/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="INTRANET/intranet/vendor/datatables/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <!-- Page level custom scripts -->
+    <script src="INTRANET/intranet/js/demo/datatables-demo.js" type="text/javascript"></script>
 
 </body>
 
 </html>
-
-
-
 

@@ -23,6 +23,7 @@ public class Venta {
     private double efectivo;
     private double cambio;
     private String indicador;
+    private int stock;
 
     // Constructor
     public Venta() {
@@ -125,66 +126,29 @@ public class Venta {
     public void setIndicador(String indicador) {
         this.indicador = indicador;
     }
-    
-    
 
-    // TRAER DATOS DE LA BASE DE DATOS: STOCK Y PRECIO POR UNIDAD
-    public void obtenerDatosProductoDesdeBD(String idProducto) {
-        String consulta = "SELECT preciounidad, stock FROM productos WHERE idproducto = ?";
-        try {
-            con = conexion.getConnection();
-            ps = con.prepareStatement(consulta);
-            ps.setString(1, idProducto);
-            ResultSet resultSet = ps.executeQuery();
-
-            if (resultSet.next()) {
-                double precio = resultSet.getDouble("preciounidad");
-                int stock = resultSet.getInt("stock");
-                calcularSubtotal(precio);
-                
-                int updatedStock = stock - cantidadventa;
-                actualizarStockProductoEnBD(idProducto, updatedStock);
-            } else {
-                
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    // ACTUALIZAR STOCK
-        public void actualizarStockProductoEnBD(String idProducto, int nuevoStock) {
-        String consulta = "UPDATE productos SET stock = ? WHERE idproducto = ?";
-        try {
-            ps = con.prepareStatement(consulta);
-            ps.setInt(1, nuevoStock);
-            ps.setString(2, idProducto);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public int getStock() {
+        return stock;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
     
- 
-    
-    //METODOS PROPIOS
+    // Otros atributos y métodos
 
-    // CALCULAR EL SUBTOTAL
     public void calcularSubtotal(double precio) {
         this.subtotal = cantidadventa * precio;
     }
 
-    // CALCULAR EL IGV
     public void calcularIGV() {
         this.igv = subtotal * 0.18; // IGV rate is 18%
     }
 
-    // CALCULAR EL TOTAL
     public void calcularTotal() {
         this.totalpagar = subtotal + igv;
     }
-    
+
     
     
     

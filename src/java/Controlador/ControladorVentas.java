@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ControladorVentas extends HttpServlet {
     String vistalistaventa ="lista_ventas.jsp";
-    
+    String vistaaregarventa="admin_ventas.jsp";
     Venta v= new Venta();
     VentasDAO dao = new VentasDAO(); 
     String id;
@@ -30,65 +30,51 @@ public class ControladorVentas extends HttpServlet {
         if(accion.equalsIgnoreCase("listar")){
             acceso=vistalistaventa;
         }else if(accion.equalsIgnoreCase("add")){
-            acceso=vistaaregarprod;
+            acceso=vistaaregarventa;
         }else if(accion.equalsIgnoreCase("Agregar")){
-            LeerDatosProductos(request,response);
-            dao.Agregar(p);
-            acceso=vistalistaprod;
-        }else if (accion.equalsIgnoreCase("editar")){
-            request.setAttribute("idprod", request.getParameter("idprod"));
-            acceso=vistaeditarprod;
-        }else if (accion.equalsIgnoreCase("Actualizar")){
-            LeerDatosProductos(request, response);
-            dao.Editar(p);
-            acceso=vistalistaprod;
+            LeerDatosVentas(request,response);
+            dao.Agregar(v);
+            acceso=vistalistaventa;
         }else if (accion.equalsIgnoreCase("eliminar")){
             id = request.getParameter("idprod");
             dao.Eliminar(id);
-            acceso=vistalistaprod;
+            acceso=vistalistaventa;
         }       
         
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void LeerDatosVentas(HttpServletRequest request, HttpServletResponse response) {
+        v.setIdventa(request.getParameter("idventa"));
+        v.setFechaventa(request.getParameter(""));
+        v.setCantidadventa(0);
+        v.setSubtotal(0);
+        v.setIgv(0);
+        v.setTotalpagar(0);
+        v.setEfectivo(0);
+        v.setCambio(0);
+        v.setIdCliente(id);
+        v.setIdproducto(id);
+        v.setIdUsuario(id);
+    }
 
 }

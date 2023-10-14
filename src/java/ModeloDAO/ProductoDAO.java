@@ -103,6 +103,7 @@ public class ProductoDAO implements CRUDproductos{
             ps.setDouble(5, prod.getPreciounidad());
             ps.setString(6, prod.getFechavencimiento());
             ps.setInt(7, prod.getStock());
+            ps.setString(8, prod.getIdproductos());
             ps.executeUpdate();
 
         } catch (Exception ex) {

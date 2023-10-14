@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin_clientes
-    Created on : 10 oct. 2023, 17:35:01
-    Author     : Lesly
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -311,18 +305,22 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Agregar cliente</h1>
                     
-                 <form method="POST" action="agregarcliente.php">
+                 <form method="POST" action="ControladorClientes">
+                 <div class="form-group">
+                   <label for="exampleInputEmail1">ID Cliente</label>
+                   <input name="idCliente" type="text" class="form-control" id="idCliente" aria-describedby="emailHelp" placeholder="Ej. C003">
+                 </div>
                  <div class="form-group">
                    <label for="exampleInputEmail1">Nombres</label>
-                   <input name="nombrecliente" type="text" class="form-control" id="nombrecliente" aria-describedby="emailHelp" placeholder="Ingresar nombres">
+                   <input name="nombre_cliente" type="text" class="form-control" id="nombre_cliente" aria-describedby="emailHelp" placeholder="Ingresar nombres">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Apellidos</label>
-                  <input name="apellidocliente" type="text" class="form-control" id="apellidocliente" placeholder="Ingresar apellidos">
+                  <input name="apellido_cliente" type="text" class="form-control" id="apellido_cliente" placeholder="Ingresar apellidos">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Dni</label>
-                  <input name="dnicliente" type="text" class="form-control" id="dnicliente" placeholder="ej. 73796530">
+                  <input name="dni" type="text" class="form-control" id="dni" placeholder="ej. 73796530">
                  </div>
                  <div class="form-group">
                   <label for="exampleInputPassword1">Dirección</label>
@@ -333,8 +331,8 @@
                   <input name="telefono" type="text" class="form-control" id="telefono" placeholder="ej. 993192986">
                  </div>
                 
-                     <button name="enviar" type="submit" id="enviar" value="Enviar" class="btn btn-primary">Agregar</button> &nbsp;
-                     <a href="clientes.php">  Revisar lista</a>
+                     <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button> &nbsp;
+                     <a href="lista_clientes.jsp">  Revisar lista</a>
                 </form>
         
                 </div>

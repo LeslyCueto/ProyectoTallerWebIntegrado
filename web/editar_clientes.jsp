@@ -1,9 +1,7 @@
-<%@page import="java.util.Iterator" %>
 <%@page import="Modelo.Clientes" %>
-<%@page import="java.util.List" %>
 <%@page import="ModeloDAO.ClientesDAO" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,18 +13,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Clientes</title>
+    <title>Agregar cliente</title>
 
     <!-- Custom fonts for this template-->
     <link href="INTRANET/intranet/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7871faee3a.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Custom styles for this template-->
     <link href="INTRANET/intranet/css/sb-admin-2.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7871faee3a.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -92,7 +89,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
 
         </ul>
         <!-- End of Sidebar -->
@@ -307,91 +303,46 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
+                    <%
+                    ClientesDAO dao = new ClientesDAO();
+                    String idcli = (String) request.getAttribute("idcli");
+                    Clientes c = dao.Obtener(idcli);
+                    %>
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Clientes</h1>
-                        <a href="ReporteCliente.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-file-pdf"></i> Generar PDF</a>
-                     
-                    </div>
+                    <h1 class="h3 mb-4 text-gray-800">Editar cliente</h1>
                     
-                    <a href="admin_clientes.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Agregar cliente</a><br>
-                    
-                  
-                    
-                    <!-- DataTales Example -->
-                    <br>
-                    <form method="POST" action="">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Clientes registrados</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Dni</th>
-                                            <th>Dirección</th>
-                                            <th>Teléfono</th>
-                                            <th><i class="fa-solid fa-bars"></i></th>
-                                            <th><i class="fa-solid fa-bars"></i></th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Dni</th>
-                                            <th>Dirección</th>
-                                            <th>Teléfono</th>
-                                            <th><i class="fa-solid fa-bars"></i></th>
-                                            <th><i class="fa-solid fa-bars"></i></th>
-                                            
-                                        </tr>
-                                    </tfoot>
-                                    
-                        
-                                        
-                        <tbody>
-                        <!-- JS CODE -->    
-                        <%
-                        ClientesDAO dao= new ClientesDAO();
-                        List<Clientes> lista = dao.ListarClientes();
-                        Iterator<Clientes> iter = lista.iterator();
-                        Clientes c= null;
-                        while(iter.hasNext()){
-                        c=iter.next();
-                        
-                        %>
-                        <tr>    
-                                    <td><%= c.getIdclientes() %> </td>
-                                    <td><%= c.getNombrecli() %></td>
-                                    <td><%= c.getApellidocli() %></td>
-                                    <td><%= c.getDni() %> </td>
-                                    <td><%= c.getTelefono() %> </td>
-                                    <td><%= c.getDireccion() %> </td>
-                                    <td>
-                                        <a href="ControladorClientes?accion=eliminar&idcli=<%= c.getIdclientes() %>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="ControladorClientes?accion=editar&idcli=<%= c.getIdclientes() %>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    </td>
-                        </tr>
-                         <%}%>
-                        </tbody>
-                                   
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                 <form method="POST" action="ControladorClientes">
+                 <div class="form-group">
+                   <label for="exampleInputEmail1">ID Cliente</label>
+                   <input name="idCliente" type="text" class="form-control" id="idCliente" readonly value="<%= c.getIdclientes() %>" enab>
+                 </div>
+                 <div class="form-group">
+                   <label for="exampleInputEmail1">Nombres</label>
+                   <input name="nombre_cliente" type="text" class="form-control" id="nombre_cliente" value="<%= c.getNombrecli() %>">
+                 </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Apellidos</label>
+                  <input name="apellido_cliente" type="text" class="form-control" id="apellido_cliente" value="<%= c.getApellidocli() %>">
+                 </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Dni</label>
+                  <input name="dni" type="text" class="form-control" id="dni" value="<%= c.getDni() %>">
+                 </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Dirección</label>
+                  <input name="direccion" type="text" class="form-control" id="direccion" value="<%= c.getDireccion() %>">
+                 </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Teléfono</label>
+                  <input name="telefono" type="text" class="form-control" id="telefono" value="<%= c.getTelefono() %>">
+                 </div>
+                
+                     <button name="accion" type="submit" value="Actualizar" class="btn btn-primary">Actualizar</button> &nbsp;
+                     <a href="lista_clientes.jsp">  Revisar lista</a>
                 </form>
+        
                 </div>
                 <!-- /.container-fluid -->
 
@@ -455,13 +406,15 @@
     <!-- Page level custom scripts -->
     <script src="INTRANET/intranet/js/demo/chart-area-demo.js" type="text/javascript"></script>
     <script src="INTRANET/intranet/js/demo/chart-pie-demo.js" type="text/javascript"></script>
-    <script src="INTRANET/intranet/vendor/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="INTRANET/intranet/vendor/datatables/dataTables.bootstrap4.min.js" type="text/javascript"></script>
-    <!-- Page level custom scripts -->
-    <script src="INTRANET/intranet/js/demo/datatables-demo.js" type="text/javascript"></script>
+    
+    
 
 </body>
 
 </html>
+
+
+
+
 
 

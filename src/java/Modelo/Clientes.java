@@ -2,7 +2,7 @@ package Modelo;
 
 public class Clientes {
 
-    private int idclientes;
+    private String idclientes;
     private String nombrecli;
     private String apellidocli;
     private String dni;
@@ -11,15 +11,8 @@ public class Clientes {
     private String indicador;
 
     //constructor
-
-    public Clientes(String nombrecli, String apellidocli, String dni, String telefono, String direccion) {
-        this.nombrecli = nombrecli;
-        this.apellidocli = apellidocli;
-        this.dni = dni;
-        this.telefono = telefono;
-        this.direccion = direccion;
+    public Clientes() {
     }
-    
 
     //getters and setters
     public Object[]RegistroClientes(int numeracion){
@@ -27,13 +20,15 @@ public class Clientes {
         return fila;
     }
 
-    public int getIdclientes() {
+    public String getIdclientes() {
         return idclientes;
     }
 
-    public void setIdclientes(int idclientes) {
+    public void setIdclientes(String idclientes) {
         this.idclientes = idclientes;
     }
+
+    
 
     public String getNombrecli() {
         return nombrecli;

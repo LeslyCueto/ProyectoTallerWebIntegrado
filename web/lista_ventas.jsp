@@ -314,7 +314,7 @@
                      
                     </div>
                     
-    <a href="ControladorVentas?accion=add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    <a href="admin_ventas.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Realizar Venta</a><br>
                                     
 

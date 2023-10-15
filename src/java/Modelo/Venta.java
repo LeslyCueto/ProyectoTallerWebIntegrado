@@ -24,6 +24,11 @@ public class Venta {
     private double cambio;
     private String indicador;
     private int stock;
+    
+    private double preciounidad;
+    private String nombreproducto;
+    private String nombre_cliente;
+    private String nombre_usuario;
 
     // Constructor
     public Venta() {
@@ -134,6 +139,40 @@ public class Venta {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    public double getPreciounidad() {
+        return preciounidad;
+    }
+
+    public void setPreciounidad(double preciounidad) {
+        this.preciounidad = preciounidad;
+    }
+
+    public String getNombreproducto() {
+        return nombreproducto;
+    }
+
+    public void setNombreproducto(String nombreproducto) {
+        this.nombreproducto = nombreproducto;
+    }
+
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public void setNombre_cliente(String nombre_cliente) {
+        this.nombre_cliente = nombre_cliente;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+    
+    
     
     // Otros atributos y métodos
 

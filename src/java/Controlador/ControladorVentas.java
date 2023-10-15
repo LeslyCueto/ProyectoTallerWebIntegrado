@@ -36,7 +36,7 @@ public class ControladorVentas extends HttpServlet {
             dao.Agregar(v);
             acceso=vistalistaventa;
         }else if (accion.equalsIgnoreCase("eliminar")){
-            id = request.getParameter("idprod");
+            id = request.getParameter("idvent");
             dao.Eliminar(id);
             acceso=vistalistaventa;
         }       
@@ -64,17 +64,16 @@ public class ControladorVentas extends HttpServlet {
     }// </editor-fold>
     
     private void LeerDatosVentas(HttpServletRequest request, HttpServletResponse response) {
-        v.setIdventa(request.getParameter("idventa"));
-        v.setFechaventa(request.getParameter(""));
-        v.setCantidadventa(0);
-        v.setSubtotal(0);
-        v.setIgv(0);
-        v.setTotalpagar(0);
-        v.setEfectivo(0);
-        v.setCambio(0);
-        v.setIdCliente(id);
-        v.setIdproducto(id);
-        v.setIdUsuario(id);
+    v.setIdventa(request.getParameter("idventa"));
+    v.setFechaventa(request.getParameter("fechaventa"));
+    v.setIdCliente(request.getParameter("idCliente"));
+    v.setIdUsuario(request.getParameter("idUsuario"));
+    v.setIdproducto(request.getParameter("idproducto"));
+    v.setCantidadventa(Integer.parseInt(request.getParameter("cantidadventa"))); 
+    v.setEfectivo(Double.parseDouble(request.getParameter("efectivo"))); 
+    
+    
+    
     }
 
 }

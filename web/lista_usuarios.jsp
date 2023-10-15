@@ -357,10 +357,6 @@
                                             <th><i class="fa-solid fa-bars"></i></th>
                                         </tr>
                                     </tfoot>
-                                    <?php
-                                        while ($fila= mysqli_fetch_assoc($lista)){
-                                            $numeracion++;
-                                        ?>
                         <tbody>
                         <!-- JS CODE -->    
                         <%

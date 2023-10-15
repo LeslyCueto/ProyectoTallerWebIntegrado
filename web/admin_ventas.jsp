@@ -1,3 +1,8 @@
+<%@page import="java.util.Iterator" %>
+<%@page import="Modelo.*" %>
+<%@page import="java.util.List" %>
+<%@page import="ModeloDAO.*" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -301,7 +306,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Realizar venta</h1>
+                <h1 class="h3 mb-4 text-gray-800">Realizar venta</h1>
+                
+                <!-- JS CODE -->    
+                        <%  
+                        ProductoDAO dao = new ProductoDAO();
+                        List<Productos> listaProductos = dao.ListarProductos();
+                        request.setAttribute("listaProductos", listaProductos);
+                        %>
                     
                 <form method="POST" action="ControladorVentas" >
                     
@@ -314,61 +326,71 @@
                  <label for="exampleInputPassword1" class="form-label">Fecha:</label>
                  <input type="date" name="fechaventa" class="form-control" id="fechaventa" >
                  </div>  
+                   
+                    
+                <div class="form-group">
+                   <label for="exampleInputEmail1">Cliente:</label>
+                   <input type="text" class="form-control" id="idCliente" name="idCliente" aria-describedby="emailHelp" placeholder="Ingresar el ID del cliente">
+                 </div>
                 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Cantidad Vendida</label>
-                  <input type="text" class="form-control" id="cantidadventa" name="cantidadventa" placeholder="Cafe(C1), Sandwiches(C2), Postres(C3), Adicionales(C4)">
-                 </div>    
+                  <label for="exampleInputPassword1">Usuario:</label>
+                    <input type="text" class="form-control" id="idUsuario" name="idUsuario" placeholder="50">
+                 </div>
                     
                 <div class="form-group">
-                   <label for="exampleInputEmail1">ID Cliente</label>
-                   <input type="text" class="form-control" id="idCliente" name="idCliente" aria-describedby="emailHelp" placeholder="Ingresar el ID del cliente">
-                 </div>    
+                  <label for="exampleInputPassword1">Producto:</label>
+                    <input type="text" class="form-control" id="idproducto" name="idproducto" placeholder="50">
+                 </div>  
                     
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">N° Categoría</label>
-                  <input type="text" class="form-control" id="idcategoria" name="idcategoria" placeholder="Cafe(C1), Sandwiches(C2), Postres(C3), Adicionales(C4)">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Producto:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="idproducto">
+                    <c:forEach items="${listaProductos}" var="producto">
+                    <option value="${producto.getId()}"><c:out value="${producto.getNombreproducto()}" /></option>
+                    </c:forEach>
+                    </select>
                  </div>
+                    
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Cantidad:</label>
+                  <input type="text" class="form-control" id="cantidadventa" name="cantidadventa" placeholder="Ej. 1,2,3..">
+                 </div>  
  
                  <div class="form-group">
-                  <label for="exampleInputPassword1">Subtotal</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ej. Cafe Pasado, Torta 3 leches, etc..">
+                  <label for="exampleInputPassword1">Subtotal:</label>
+                  
+                  <input type="text" class="form-control" id="subtotal" name="subtotal" readonly>
                  </div>
                      
                  <div class="form-group">
-                  <label for="exampleInputPassword1">IGV</label>
-                  <input type="text" class="form-control" id="cantidadproducto" name="cantidadproducto" placeholder="ej. 10 cajas x 30 bolsas/envases">
+                  <label for="exampleInputPassword1">IGV:</label>
+                  <input type="text" class="form-control" id="igv" name="igv" placeholder="" readonly>
                  </div>
                  <div class="form-group">
-                  <label for="exampleInputPassword1">Total</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
+                  <label for="exampleInputPassword1">Total:</label>
+                    <input type="text" class="form-control" id="totalpagar" name="totalpagar" readonly>
+                    <br>
+                  <button type="button" class="btn btn-dark">Calcular total</button>
                  </div>
                   <div class="form-group">
-                  <label for="exampleInputPassword1">Efectivo</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
+                  <label for="exampleInputPassword1">Efectivo:</label>
+                    <input type="text" class="form-control" id="efectivo" name="efectivo" placeholder="50">
                  </div>
                  <div class="form-group">
-                  <label for="exampleInputPassword1">Cambio</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
+                  <label for="exampleInputPassword1">Cambio:</label>
+                    <input type="text" class="form-control" id="cambio" name="cambio" readonly>
+                    <br>
+                  <button type="button" class="btn btn-dark">Calcular cambio</button>
                  </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Cliente</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Producto</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputPassword1">Usuario</label>
-                    <input type="text" class="form-control" id="preciounidad" name="preciounidad" placeholder="50">
-                 </div>
+                 
                  <br>    
-                 <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
+                 <button name="accion" type="submit" value="Agregar" class="btn btn-primary">Agregar</button>&nbsp;
+                     <a href="lista_ventas.jsp">  Revisar lista</a>
                 </form>
+                    
                     <br> 
                     <br> 
-
 
                 </div>
                 <!-- /.container-fluid -->

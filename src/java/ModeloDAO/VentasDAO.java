@@ -142,44 +142,55 @@ public class VentasDAO implements CRUDventas{
 }
 
     @Override
-    public Venta obtenerDatosProductoDesdeBD(String idProducto) {
-    String consulta = "SELECT preciounidad, stock FROM productos WHERE idproducto = ?";
-    try {
-        con = conexion.getConnection();
-        ps = con.prepareStatement(consulta);
+    public Venta obtenerDatosProductoDesdeBD(String idProducto, int cantidadVenta) {
+    String consulta = "SELECT nombreproducto, preciounidad, stock FROM productos WHERE idproducto = ?";
+    Venta v = new Venta();
+
+    try (Connection con = conexion.getConnection();
+         PreparedStatement ps = con.prepareStatement(consulta)) {
         ps.setString(1, idProducto);
-        ResultSet resultSet = ps.executeQuery();
-        Venta v = new Venta();
+        try (ResultSet resultSet = ps.executeQuery()) {
+            if (resultSet.next()) {
+                String nombreproducto = resultSet.getString("nombreproducto");
+                double preciounidad = resultSet.getDouble("preciounidad");
+                int stock = resultSet.getInt("stock");
 
-        if (resultSet.next()) {
-            double precio = resultSet.getDouble("preciounidad");
-            int stock = resultSet.getInt("stock");
-            
-            // Calcular el subtotal como precio * cantidad de productos
-            double subtotal = precio * v.getCantidadventa();
-            v.setSubtotal(subtotal);
-            
-            // Calcular IGV y Total
-            v.calcularIGV();
-            v.calcularTotal();
+                v.setIdproducto(idProducto);
+                v.setNombreproducto(nombreproducto);
+                v.setPreciounidad(preciounidad);
+                v.setStock(stock);
+                v.setCantidadventa(cantidadVenta);
 
-            // Restar la cantidad de productos al stock
-            int nuevoStock = stock - v.getCantidadventa();
+                // Calcular el subtotal como precio * cantidad de productos
+                double subtotal = preciounidad * cantidadVenta;
+                v.setSubtotal(subtotal);
 
-            // Actualizar el stock en la base de datos
-            actualizarStockProductoEnBD(idProducto, nuevoStock);
+                // Calcular IGV (Impuesto General a las Ventas) y Total
+                v.calcularIGV();
+                v.calcularTotal();
 
-            // Actualiza el stock en el objeto Venta
-            v.setStock(nuevoStock);
-        } else {
-            // Manejar el caso en el que no se encuentre el producto
-            return null;
+                // Restar la cantidad de productos vendidos al stock
+                int nuevoStock = stock - cantidadVenta;
+
+                // Actualizar el stock en la base de datos
+                actualizarStockProductoEnBD(idProducto, nuevoStock);
+
+                // Actualiza el stock en el objeto Venta
+                v.setStock(nuevoStock);
+            } else {
+                // Manejar el caso en el que no se encuentre el producto
+                v = null;
+            }
         }
     } catch (SQLException e) {
         e.printStackTrace();
+        // Manejar la excepción adecuadamente aquí
+        v = null;
     }
+
     return v;
 }
+
 
 
     @Override
@@ -211,6 +222,44 @@ public class VentasDAO implements CRUDventas{
         }
         return false;
     }    
+
+    @Override
+    public Venta obtenerDatosCliente(String idCliente) {
+        String nombreCliente = null;
+        String query = "SELECT nombre_cliente FROM cliente WHERE idCliente = ?";
+        Venta v = new Venta();
+        try (Connection con = conexion.getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, idCliente);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                nombreCliente = resultSet.getString("nombre_cliente");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return v;
+    }
+    
+    
+
+
+    @Override
+    public Venta obtenerDatosUsuario(String idUsuario) {
+        String nombreUsuario = null;
+        String query = "SELECT nombre_usuario FROM usuario WHERE idUsuario = ?";
+        try (Connection con = conexion.getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, idUsuario);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                nombreUsuario = resultSet.getString("nombre_usuario");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return v;
+    }
     
     
 
